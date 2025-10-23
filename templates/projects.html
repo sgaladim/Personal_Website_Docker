@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Projects • Personal Webpage Showcase{% endblock %}
+{% block content %}
+<section class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <h2 style="margin:0;">Projects</h2>
+    <a class="button" href="{{ url_for('new_project') }}">+ Add Project</a>
+  </div>
+
+  {% if projects|length == 0 %}
+    <p style="margin-top:1rem;">No projects yet. Click "Add Project" to create your first one.</p>
+  {% else %}
+    <div style="overflow-x:auto; margin-top:1rem;">
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:.75rem; border-bottom:1px solid #e5e7eb;">Title</th>
+            <th style="text-align:left; padding:.75rem; border-bottom:1px solid #e5e7eb;">Description</th>
+            <th style="text-align:left; padding:.75rem; border-bottom:1px solid #e5e7eb;">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in projects %}
+          <tr>
+            <td style="padding:.75rem; vertical-align:top;"><strong>{{ p['title'] }}</strong></td>
+            <td style="padding:.75rem; vertical-align:top;">{{ p['description'] }}</td>
+            <td style="padding:.75rem; vertical-align:top;">
+              <img
+                src="{{ url_for('static', filename='images/' ~ p['image_filename']) }}"
+                alt="{{ p['title'] }} image"
+                title="{{ p['image_filename'] }}"
+                style="max-width:200px; height:auto; border-radius:.5rem; border:1px solid #e5e7eb;" />
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

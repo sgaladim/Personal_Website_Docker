@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home • Personal Webpage Showcase{% endblock %}
+{% block content %}
+<section class="hero">
+  <h2>Welcome!</h2>
+  <p>
+    I'm <strong>Seyra Galadima</strong>, and this site showcases my background, work,
+    and interests. Explore the pages to learn more, view selected projects,
+    and get in touch.
+  </p>
+  <a class="button" href="{{ url_for('projects') }}">See my projects</a>
+</section>
+<section class="highlights grid">
+  <article class="card">
+    <h3>About Me</h3>
+    <p>A short bio, interests, goals, and what I'm working on.</p>
+    <a href="{{ url_for('about') }}" class="text-link">Read more →</a>
+  </article>
+  <article class="card">
+    <h3>Resume</h3>
+    <p>Education, experience, skills, and achievements.</p>
+    <a href="{{ url_for('resume') }}" class="text-link">View resume →</a>
+  </article>
+  <article class="card">
+    <h3>Projects</h3>
+    <p>Selected projects with descriptions and links.</p>
+    <a href="{{ url_for('projects') }}" class="text-link">Browse projects →</a>
+  </article>
+</section>
+{% endblock %}

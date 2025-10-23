@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}About • Personal Webpage Showcase{% endblock %}
+{% block content %}
+<article class="card">
+  <div class="profile-section">
+    <img src="{{ url_for('static', filename='images/ProfilePic.JPG') }}" alt="Portrait of Seyra Galadima" class="profile-picture" />
+  </div>
+  <div class="biography">
+    <h2>About Me</h2>
+    <p>
+      I am currently a Master's Candidate in Information Systems at the Kelley School of Business at Indiana University, building upon my recent Bachelor's degree in Informatics from Indiana University Bloomington. As I pursue higher education, I am actively seeking full-time opportunities after graduation, particularly in the areas of Business Analytics, Project Management, and IT Consulting.
+    </p>
+    <p>
+      My academic journey has been marked by a strong focus on data analysis, business intelligence, and technology solutions. Through my coursework and internships, I've developed expertise in SQL, Tableau, Python, and various business analytics tools. I'm particularly passionate about using data-driven insights to solve complex business problems and drive organizational success.
+    </p>
+    <p>
+      Beyond academics, I'm deeply involved in leadership and community service. I serve as Vice President of Culture and Belonging for the Master of Science Information Systems Association, where I plan large-scale cultural events and foster inclusive environments. I also volunteer as a Coordinator at the Boys & Girls Club, managing volunteer programs and supporting youth development initiatives.
+    </p>
+    <p>
+      When I'm not studying or working, I enjoy cooking ethnic dishes, spending quality time with family and close friends, reading business and technology books, and maintaining an active lifestyle through regular workouts. I'm also fluent in French and Hausa, which reflects my diverse cultural background and global perspective.
+    </p>
+    <p>
+      I'm excited about the opportunity to bring my analytical skills, leadership experience, and passion for technology to a dynamic organization where I can contribute to meaningful projects and continue growing as a professional.
+    </p>
+  </div>
+</article>
+{% endblock %}

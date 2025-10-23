@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Thank You • Personal Webpage Showcase{% endblock %}
+{% block content %}
+<article class="card">
+  <h2>Thank You!</h2>
+  <p>Your submission was received. I'll get back to you soon.</p>
+  <p><a class="button" href="{{ url_for('index') }}">Back to Home</a></p>
+</article>
+{% endblock %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Personal Webpage Showcase{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="site-title">Seyra Galadima</h1>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">☰</button>
+      <nav id="primary-nav" aria-label="Primary">
+        <ul class="nav">
+          <li><a class="{% if request.path == '/' %}active{% endif %}" href="{{ url_for('index') }}">Home</a></li>
+          <li><a class="{% if request.path.startswith('/about') %}active{% endif %}" href="{{ url_for('about') }}">About</a></li>
+          <li><a class="{% if request.path.startswith('/resume') %}active{% endif %}" href="{{ url_for('resume') }}">Resume</a></li>
+          <li><a class="{% if request.path.startswith('/projects') %}active{% endif %}" href="{{ url_for('projects') }}">Projects</a></li>
+          <li><a class="{% if request.path.startswith('/contact') %}active{% endif %}" href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Seyra Galadima</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const headerEl = document.querySelector('header');
+    const toggleBtn = document.querySelector('.nav-toggle');
+    if (toggleBtn && headerEl) {
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = headerEl.classList.toggle('open');
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+  </script>
+</body>
+</html>
