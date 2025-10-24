@@ -1,13 +1,18 @@
 import pytest
 import os
 import tempfile
+import sqlite3
 from DAL import init_db, get_projects, insert_project
 
 @pytest.fixture
 def temp_db():
     """Create a temporary database for testing."""
     db_fd, db_path = tempfile.mkstemp()
-    os.environ['DATABASE_PATH'] = db_path
+    
+    # Set the database path for the DAL module
+    import DAL
+    original_db_path = getattr(DAL, 'DATABASE_PATH', 'projects.db')
+    DAL.DATABASE_PATH = db_path
     
     # Initialize the database
     init_db()
@@ -17,6 +22,7 @@ def temp_db():
     # Cleanup
     os.close(db_fd)
     os.unlink(db_path)
+    DAL.DATABASE_PATH = original_db_path
 
 def test_init_db(temp_db):
     """Test that database initialization works."""
